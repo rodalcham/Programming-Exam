@@ -31,7 +31,7 @@ public class Parse {
 			reader.close();
 			throw new IOException("Invalid input"); 
 		}
-		if (row < 0 || col < 0) {
+		if (row <= 0 || col <= 0) {
 			reader.close();
 			throw new IOException("Invalid input"); 
 		}
@@ -55,7 +55,7 @@ public class Parse {
 				reader.close();
 				throw new IOException("Invalid input"); 
 			}
-			if (row < 0 || col < 0) {
+			if (row < 1 || col < 1) {
 				reader.close();
 				throw new IOException("Invalid input"); 
 			}

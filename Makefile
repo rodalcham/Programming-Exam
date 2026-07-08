@@ -1,3 +1,7 @@
+# Important!!!
+# You may need to give permission to create the /obj directory.
+# You can also just create it yourself.
+
 JAVAC := javac
 JAVA := java
 
@@ -6,14 +10,15 @@ OBJ_DIR := obj
 MAIN_CLASS := src.Main
 
 SOURCES := $(wildcard $(SRC_DIR)/*.java)
-CLASSES := $(SOURCES:$(SRC_DIR)/%.java=$(OBJ_DIR)/src/%.class)
+BUILD_STAMP := $(OBJ_DIR)/.build-stamp
 
-.PHONY: all run clean rebuild
+.PHONY: all run clean rebuild re
 
-all: $(CLASSES)
+all: $(BUILD_STAMP)
 
-$(OBJ_DIR)/src/%.class: $(SRC_DIR)/%.java | $(OBJ_DIR)
+$(BUILD_STAMP): $(SOURCES) | $(OBJ_DIR)
 	$(JAVAC) -d $(OBJ_DIR) $(SOURCES)
+	touch $(BUILD_STAMP)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -25,3 +30,5 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 rebuild: clean all
+
+re: rebuild

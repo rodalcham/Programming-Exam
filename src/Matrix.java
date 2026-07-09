@@ -68,7 +68,7 @@ public interface Matrix {
 			a++;
 			j++;
 		}
-		}
+	}
 
 
 	default double determinant() throws Exception{
@@ -111,7 +111,7 @@ public interface Matrix {
 			reader.close();
 			throw new Exception("Invalid input");
 		}
-		parts = line.split(" ");
+		parts = line.split(" +");
 		if (parts.length != 2){
 			reader.close();
 			throw new Exception("Invalid input"); 
@@ -133,7 +133,7 @@ public interface Matrix {
 		// Now taking each line out
 		line = reader.readLine();
 		while (line != null) {
-			parts = line.split(" ");
+			parts = line.split(" +");
 			if (parts.length != 3){
 				reader.close();
 				throw new Exception("Invalid input"); 

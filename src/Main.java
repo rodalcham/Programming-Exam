@@ -8,7 +8,7 @@ class Main {
 		RowWiseListMatrix m2 = new RowWiseListMatrix();
 
 		try {
-			m1.Parse("../examples/2x5.txt");
+			m1.Parse("../examples/3x3.txt");
 			m2.Parse("../examples/3x3.txt");
 
 			System.out.println("Coordinate Linked List Matrix:\n");
@@ -25,7 +25,8 @@ class Main {
 			m2.display();
 			m2.transpose();
 
-			// System.out.println("Determinant : " + m2.determinant());
+			System.out.println("\nDeterminant : " + m1.determinant());
+			System.out.println("Determinant : " + m2.determinant());
 			// m2.transpose();
 			// System.out.println("Transposed Determinant : " + m2.determinant());
 		}

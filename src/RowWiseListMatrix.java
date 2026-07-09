@@ -140,21 +140,21 @@ public class RowWiseListMatrix implements Matrix{
 	public RowWiseListMatrix reducedMatrix(int row, int col) throws Exception{
 		RowWiseListMatrix ret = new RowWiseListMatrix();
 		ret.init(rows - 1, cols - 1);
-
-		for (int i = 0; i < rows; i++) {
-			if (i == rows)
+		
+		for (int i = 1; i <= rows; i++) {
+			if (i == row)
 				continue;
-			RowWiseListNode old = data[i];
+			RowWiseListNode old = data[i-1];
 			while (old != null) {
 				if (old.col != col) {
-					int newRow = i;	
+					int newRow = i;
 					int newCol = old.col;	
 					if (newRow > row)
 						newRow--;
 					if (newCol > col)
 						newCol--;
 					ret.add(newRow, newCol, old.data);
-					}
+				}
 				old = old.next;
 			}
 		}

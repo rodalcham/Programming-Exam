@@ -78,7 +78,7 @@ public interface Matrix {
 			return get(1, 1);
 		return recLaplace();
 	}
-
+	
 	default double recLaplace()  throws Exception{
 		if (rows() == 2)
 			return (get(1, 1) * get(2, 2) - get(1,2) * get(2, 1));
@@ -86,16 +86,15 @@ public interface Matrix {
 			int i = 1;
 			double det = 0;
 			while (i <= rows()) {
-				if (get(1, i) != 0)
-					{
-						if (i % 2 != 0)
-							det += get(1, i) * reducedMatrix(1, i).recLaplace();
-						else
-							det -= get(1, i) * reducedMatrix(1, i).recLaplace();
-					}
-					i++;
+				if (get(1, i) != 0) {
+					if (i % 2 != 0)
+						det += get(1, i) * reducedMatrix(1, i).recLaplace();
+					else
+						det -= get(1, i) * reducedMatrix(1, i).recLaplace();
 				}
-			return det;
+				i++;
+			}
+				return det;
 		}
 	}
 

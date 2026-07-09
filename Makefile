@@ -12,7 +12,7 @@ MAIN_CLASS := src.Main
 SOURCES := $(wildcard $(SRC_DIR)/*.java)
 BUILD_STAMP := $(OBJ_DIR)/.build-stamp
 
-.PHONY: all run clean rebuild re
+.PHONY: all run log clean rebuild re
 
 all: $(BUILD_STAMP)
 
@@ -26,8 +26,12 @@ $(OBJ_DIR):
 run: all
 	cd $(SRC_DIR) && $(JAVA) -cp ../$(OBJ_DIR) $(MAIN_CLASS)
 
+log: all
+	cd $(SRC_DIR) && $(JAVA) -cp ../$(OBJ_DIR) $(MAIN_CLASS) > "../out.txt"
+
 clean:
 	rm -rf $(OBJ_DIR)
+	rm -f out.txt
 
 rebuild: clean all
 

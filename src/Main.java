@@ -1,34 +1,46 @@
 package src;
-import java.io.IOException;
 
 class Main {
 
 		public static void main(String args[]) {
 
-		CoordinateListMatrix matrix = new CoordinateListMatrix(); 
+		CoordinateListMatrix m1 = new CoordinateListMatrix(); 
+		RowWiseListMatrix m2 = new RowWiseListMatrix();
 
 		try {
-			Parse.intoCoordinateList("../examples/matrix.txt", matrix);
+			m1.Parse("../examples/2x5.txt");
+			m2.Parse("../examples/3x3.txt");
+
+			System.out.println("Coordinate Linked List Matrix:\n");
+			m1.display();
+			System.out.println("\nAnd it's transposed:\n");
+			m1.transpose();
+			m1.display();
+			m1.transpose();
+			
+			System.out.println("\nRow Wise Linked List Matrix:\n");
+			m2.display();
+			System.out.println("\nAnd it's transposed:\n");
+			m2.transpose();
+			m2.display();
+			m2.transpose();
+
+			// System.out.println("Determinant : " + m2.determinant());
+			// m2.transpose();
+			// System.out.println("Transposed Determinant : " + m2.determinant());
 		}
-		catch(IOException err) {
-			System.out.println("Error");
+		catch(Exception err) {
+			System.out.println("Error: " + err);
+			return;
 		}
 
-		matrix.display();
-		try {
-			System.out.println("Det : " + matrix.determinant());
-		}
-		catch (Exception err) {
-			System.out.println(err);
-		}
-		matrix.transpose();
-		try {
-			System.out.println("Trans Det : " + matrix.determinant());
-		}
-		catch (Exception err) {
-			System.out.println(err);
-		}
-		// matrix.display();
+		
+	// 	try {
+	// 	}
+	// 	catch (Exception err) {
+	// 		System.out.println(err);
+	// 		return;
+	// 	}
 	}
 }
 
